@@ -1,4 +1,9 @@
 # Raft3D---3D-Prints-Management-using-Raft-Consensus-Algorithm
 
--The Raft3D project involves building a backend API for a distributed 3D printer management system, where data persistence and consistency are handled using the Raft Consensus Algorithm instead of relying on a traditional centralized database. -The system manages resources such as 3D printers, filaments, and print jobs across a cluster of nodes. 
--Each node in the cluster runs a Raft instance, ensuring that all operationsare replicated and agreed upon by the majority of nodes. This approach guarantees high availability, fault tolerance, and strong consistency, even in the presence of node failures. The backend exposes HTTP endpoints to interact with the distributed system while internally maintaining synchronized state across the cluster through Raft's leader election, log replication, and state machine mechanisms.
+Raft3D is a backend API for a distributed 3D printer management system, where data persistence and consistency are implemented using the Raft Consensus Algorithm rather than a traditional centralized database.
+
+The system manages distributed resources like 3D printers, filaments, and print jobs across a cluster of nodes.
+
+Each node runs a Raft instance, ensuring that all operations (e.g., job creation, status updates) are replicated and agreed upon by a majority of nodes, enabling high availability, fault tolerance, and strong consistency, even in case of node failures.
+
+The backend exposes a set of HTTP API endpoints to interact with the system. Internally, it uses Raft mechanisms such as leader election, log replication, and a state machine to maintain consistent state across the network.
