@@ -1,0 +1,23 @@
+commands:
+
+to check leader:
+
+ curl localhost:8082/cluster/leader
+
+make printers,filaments and print_jobs
+
+curl -X POST http://localhost:8080/api/v1/printers -H "Content-Type: application/json" -d '{"id":"printer1","company":"Creality","model":"Ender 3"}'
+
+curl -X POST http://localhost:8080/api/v1/filaments -H "Content-Type: application/json" -d '{"id":"filament1","type":"PLA","color":"Red","totalWeightInGrams":1000,"remainingWeightInGrams":500}'
+
+curl -X POST http://localhost:8080/api/v1/print_jobs -H "Content-Type: application/json" -d '{"id":"job1","printerID":"printer1","filamentID":"filament1","printWeightInGrams":150}'
+
+# Update status of the job
+curl -X POST "http://localhost:8080/api/v1/print_jobs/job1/status?status=Running"
+curl -X POST "http://localhost:8080/api/v1/print_jobs/job1/status?status=Done"
+
+list available printers,filaments,print_jobs
+
+curl http://localhost:8080/api/v1/printers | jq
+curl http://localhost:8080/api/v1/filaments | jq
+curl http://localhost:8080/api/v1/print_jobs | jq
